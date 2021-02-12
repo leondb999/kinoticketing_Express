@@ -3,10 +3,37 @@ const { body,validationResult } = require("express-validator");
 
 var Person = require('../models/Person');
 
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/*
 // Display list of all Persons.
 exports.person_list = function(req, res) {
     res.send('NOT IMPLEMENTED: Person list');
 };
+*/
+
+// Display list of all Persons.
+exports.person_list = function(req, res) {
+   // res.render('person_list', { title: 'Create Person'});
+   // nur für Test zwecke
+    let persons_list = [{'name':"Leon"}, {'name':"Nicolas"},{'name': "Niklas"}]
+    res.render('person_list', persons_list)
+    /*
+    Person.find().exec(function(err, list_persons){
+        if (err) { return next(err); }
+        //res.render('person_list', {titel: 'Person List', person_list: list_persons})
+        res.render('person_list', {titel: 'Person List', person_list: 'Kevin'})
+    });
+    */
+    
+};
+
+
+
+
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+///////////////////////////////////////////////////////////////////////////////////////////////
 
 // Display detail page for a specific Person.
 exports.person_detail = function(req, res) {

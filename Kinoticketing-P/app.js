@@ -12,6 +12,10 @@ var catalogRouter = require('./routes/catalog');  //Import routes for "catalog" 
 
 var app = express();
 
+//---- view engien --- hat Leon selbst geadded beim ausprobieren
+app.set('view engine', 'ejs')
+
+
 //-----------------------Mongo DB Datenbank ------------
 var mongoose = require('mongoose');
 var mongoDB = 'mongodb+srv://kinoadmin:1234KinoLeonNico5678@cluster0.utbum.mongodb.net/Kinoticketing-DB?retryWrites=true&w=majority';
@@ -34,6 +38,25 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/catalog', catalogRouter);  // Add catalog routes to middleware chain.
+
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+//                  Leon Test !!
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+//------------------------------TEST Ob ich daten von mongodb bekomme oder nicht ----------------------
+
+app.get('/person_list', (req, res)=>{
+  let persons_lists = [{'name':"Leon"}, {'name':"Nicolas"},{'name': "Niklas"}]
+  res.render('person_list', {'persons_list': persons_lists})
+})
+
+
+//-------------------------------------------------------------------------------------------------
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
 
 
 // catch 404 and forward to error handler
